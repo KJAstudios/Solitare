@@ -6,13 +6,14 @@ import java.util.Random;
 
 public class Deck {
 
-    List<PlayingCard> fullDeck = new ArrayList<>();
+    List<PlayingCard> fullDeck;
 
     /**
      * when a Deck object is created, it automatically creates a full deck of 52 cards
      *
      */
     Deck() {
+        fullDeck = new ArrayList<>();
         for (int i = 0; i < 4; i++) {
             for (int i2 = 0; i < 13; i++) {
                 PlayingCard tempCard = new PlayingCard(i2, i);

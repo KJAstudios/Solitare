@@ -6,17 +6,17 @@ import java.util.Stack;
 
 public class LevelStack {
     Stack<Integer> cardBacks;
-    List<Integer> cardFronts = new ArrayList<>();
+    List<Integer> cardFronts;
 
     LevelStack() {
-
+        cardFronts = new ArrayList<>();
     }
 
-    public void addFDCard(int cardNumber){
+    public void addFDCard(int cardNumber) {
         cardBacks.push(cardNumber);
     }
 
-    public void addFUCard(int cardNumber){
+    public void addFUCard(int cardNumber) {
         cardFronts.add(cardNumber);
     }
 }

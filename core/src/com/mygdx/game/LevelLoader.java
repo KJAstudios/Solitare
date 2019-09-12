@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LevelLoader {
-    private Deck gameDeck = new Deck();
-    private final Deck refDeck = new Deck();
-    private List<LevelStack> levelStacks = new ArrayList<>();
+    private Deck gameDeck;
+    private final Deck refDeck;
+    private List<LevelStack> levelStacks;
 
     LevelLoader(String levelType) {
-
+        gameDeck = new Deck();
+        refDeck = new Deck();
+        levelStacks = new ArrayList<>();
         switch (levelType) {
             case "Standard": {
                 for (int i = 0; i < 7; i++) {
