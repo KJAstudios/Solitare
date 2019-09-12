@@ -1,11 +1,12 @@
 package com.mygdx.game;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class LevelLoader {
-    Deck gameDeck = new Deck();
-    Deck refDeck = new Deck();
-    ArrayList<LevelStack> levelStacks = new ArrayList<>();
+    private Deck gameDeck = new Deck();
+    private final Deck refDeck = new Deck();
+    private List<LevelStack> levelStacks = new ArrayList<>();
 
     LevelLoader(String levelType) {
 

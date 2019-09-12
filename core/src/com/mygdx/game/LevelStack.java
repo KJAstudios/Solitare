@@ -1,11 +1,12 @@
 package com.mygdx.game;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 public class LevelStack {
     Stack<Integer> cardBacks;
-    ArrayList<Integer> cardFronts = new ArrayList<>();
+    List<Integer> cardFronts = new ArrayList<>();
 
     LevelStack() {
 
