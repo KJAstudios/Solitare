@@ -10,7 +10,6 @@ public class Deck {
 
     /**
      * when a Deck object is created, it automatically creates a full deck of 52 cards
-     *
      */
     Deck() {
         fullDeck = new ArrayList<>();
@@ -24,12 +23,17 @@ public class Deck {
 
     /**
      * returns a random card from the current deck, and removes it from the total deck
+     *
      * @return
      */
-    public int pullCard(){
+    public int pullCard() {
         Random rand = new Random();
         int randNum = rand.nextInt(fullDeck.size());
         fullDeck.remove(randNum);
         return randNum;
+    }
+
+    public int remainingCards() {
+        return fullDeck.size();
     }
 }
