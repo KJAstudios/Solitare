@@ -4,23 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LevelLoader {
-    private Deck gameDeck;
-    private Deck refDeck;
-    private List<LevelStack> levelStacks;
-    private List<LevelStack> finishStacks;
-    private LevelStack mainDeck;
 
+    private LevelHandler outputLevel;
     /**
      * LevelLoader handles the game information for a set level configuration
      *
      * @param levelType When constructed, it requires a string to designate the level it is going to load
      */
-    LevelLoader(String levelType) {
-        gameDeck = new Deck();
-        refDeck = new Deck();
-        levelStacks = new ArrayList<>();
-        finishStacks = new ArrayList<>();
-        mainDeck = new LevelStack();
+    LevelLoader(String levelType, LevelHandler inLevel) {
+        outputLevel = inLevel;
         switch (levelType) {
             case "Standard": {
                 /**
