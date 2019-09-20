@@ -36,4 +36,8 @@ public class Deck {
     public int remainingCards() {
         return fullDeck.size();
     }
+
+    public PlayingCard whatCard(int cardIndex){
+        return fullDeck.get(cardIndex);
+    }
 }

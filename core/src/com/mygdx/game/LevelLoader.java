@@ -5,14 +5,19 @@ import java.util.List;
 
 public class LevelLoader {
 
-    private LevelHandler outputLevel;
+    private static LevelHandler outputLevel;
+    private static Deck shuffleDeck;
     /**
      * LevelLoader handles the game information for a set level configuration
      *
-     * @param levelType When constructed, it requires a string to designate the level it is going to load
      */
-    LevelLoader(String levelType, LevelHandler inLevel) {
+    LevelLoader() {
+
+    }
+
+    public static void loadLevel(String levelType, LevelHandler inLevel){
         outputLevel = inLevel;
+        shuffleDeck = new Deck();
         switch (levelType) {
             case "Standard": {
                 /**
@@ -21,13 +26,13 @@ public class LevelLoader {
                  * then create the data storage for the upper row of cards
                  */
                 for (int i = 0; i < 7; i++) {
-                    levelStacks.add(new LevelStack());
+                    outputLevel.levelStacks.add(new LevelStack(i+5));
                 }
                 for (int i = 1; i <= 6; i++) {
                     addCardToStack(i, i);
                 }
                 for (int i = 0; i < 7; i++) {
-                    levelStacks.get(i).addFUCard(gameDeck.pullCard());
+                    outputLevel.levelStacks.get(i).addFUCard(shuffleDeck.pullCard());
                 }
                 createFinishStacks();
                 createMainDeck();
@@ -41,18 +46,18 @@ public class LevelLoader {
      * @param stackNum which stack in the level to place the cards
      * @param numCards the number of face down cards to place in the stack
      */
-    private void addCardToStack(int stackNum, int numCards) {
+    private static void addCardToStack(int stackNum, int numCards) {
         for (int i = 0; i < numCards; i++) {
-            levelStacks.get(stackNum).addFDCard(gameDeck.pullCard());
+            outputLevel.levelStacks.get(stackNum).addFDCard(shuffleDeck.pullCard());
         }
     }
 
     /**
      * createFinishStacks creates the top four finishing stacks at for the game
      */
-    private void createFinishStacks() {
+    private static void createFinishStacks() {
         for (int i = 0; i < 4; i++) {
-            finishStacks.add(new LevelStack());
+            outputLevel.finishStacks.add(new LevelStack(i));
         }
     }
 
@@ -60,9 +65,9 @@ public class LevelLoader {
      * createMainDeck creates the deck of cards that you draw from, holding the cards that were not
      * part of the starting deal
      */
-    private void createMainDeck() {
-        for (int i = 0; i < gameDeck.remainingCards(); i++) {
-            mainDeck.addFDCard(gameDeck.pullCard());
+    private static void createMainDeck() {
+        for (int i = 0; i < shuffleDeck.remainingCards(); i++) {
+            outputLevel.mainDeck.addFDCard(shuffleDeck.pullCard());
         }
     }
 }
