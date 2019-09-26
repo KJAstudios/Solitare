@@ -7,29 +7,38 @@ public class MovementHandler {
     MovementStack mouseStack;
     LevelStack comparatorStack;
     LevelHandler currentLevel;
-    MovementHandler(LevelHandler controlLevel){
+
+    /**
+     * Constructor
+     *
+     * @param controlLevel the level the movementHandler is handling movement for
+     */
+    MovementHandler(LevelHandler controlLevel) {
         mouseStack = new MovementStack();
         currentLevel = controlLevel;
     }
 
-    public void placeCard(){
-        if(currentLevel.determineClickedStack().getStackIndex() < 5){
+    /**
+     * PlaceCard() handles placing cards from the mouseStack to levelStacks in currentLevel
+     */
+    public void placeCard() {
+        if (currentLevel.determineClickedStack().getStackIndex() < 5) {
             return;
-        }
-        else if(mouseStack.topCard == 20){
+        } else if (mouseStack.topCard == 20) {
             return;
         }
     }
 
-    private class MovementStack{
+    /**
+     * MovementStack is a simplified LevelStack to handle cards being moved
+     */
+    private class MovementStack {
         List<Integer> movementStack;
         int topCard;
 
-        MovementStack (){
+        MovementStack() {
             movementStack = new LinkedList<>();
             topCard = 20;
         }
-
-
     }
 }
