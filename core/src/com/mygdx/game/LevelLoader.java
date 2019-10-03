@@ -1,32 +1,30 @@
 package com.mygdx.game;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class LevelLoader {
 
     private static LevelHandler outputLevel;
     private static Deck shuffleDeck;
+
     /**
      * LevelLoader handles the game information for a set level configuration
-     *
      */
     LevelLoader() {
 
     }
 
-    public static void loadLevel(String levelType, LevelHandler inLevel){
+    public static void loadLevel(String levelType, LevelHandler inLevel) {
         outputLevel = inLevel;
         shuffleDeck = new Deck();
         switch (levelType) {
+            /**
+             * creates the stacks of cards that comprise the main playing field
+             * then add the face down cards, then the single face up card
+             * then create the data storage for the upper row of cards
+             */
             case "Standard": {
-                /**
-                 * creates the stacks of cards that comprise the main playing field
-                 * then add the face down cards, then the single face up card
-                 * then create the data storage for the upper row of cards
-                 */
                 for (int i = 0; i < 7; i++) {
-                    outputLevel.levelStacks.add(new LevelStack(i+5));
+                    outputLevel.levelStacks.add(new LevelStack(i + 5));
                 }
                 for (int i = 1; i <= 6; i++) {
                     addCardToStack(i, i);
