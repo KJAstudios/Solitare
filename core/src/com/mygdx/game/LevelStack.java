@@ -6,7 +6,7 @@ import java.util.Deque;
 import java.util.List;
 
 public class LevelStack {
-    Stack<Integer> cardBacks;
+    Deque<Integer> cardBacks;
     List<Integer> cardFronts;
     int stackNumber;
 
