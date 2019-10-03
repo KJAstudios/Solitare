@@ -28,7 +28,7 @@ public class Deck {
      *
      * @return
      */
-    //TODO figure out checking method
+    //TODO figure out checking method WHILE loop (duh)
     public int pullCard() {
         Random rand = new Random();
         boolean cardPulled = false;
