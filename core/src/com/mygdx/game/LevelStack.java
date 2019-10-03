@@ -1,16 +1,18 @@
 package com.mygdx.game;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.List;
-import java.util.Stack;
 
 public class LevelStack {
-    Stack<Integer> cardBacks;
+    Deque<Integer> cardBacks;
     List<Integer> cardFronts;
     int stackNumber;
 
     LevelStack(int inSNum) {
         cardFronts = new ArrayList<>();
+        cardBacks = new ArrayDeque<>();
         stackNumber = inSNum;
     }
 

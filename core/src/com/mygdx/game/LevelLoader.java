@@ -36,6 +36,7 @@ public class LevelLoader {
                 }
                 createFinishStacks();
                 createMainDeck();
+                outputLevel.setBackTexture("test_back.png");
             }
         }
     }
