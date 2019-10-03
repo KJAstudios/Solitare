@@ -28,26 +28,30 @@ public class Deck {
      *
      * @return
      */
-    //TODO figure out checking method WHILE loop (duh)
+    /*
+    when the function is called, sets cardPulled to true, then checks if the card that was pulled by randnum has
+    already been pulled. if it has, it draws a new card and runs down the list again. if it reaches the end of the list
+    and has not gotten a hit, then the card hasn't been pulled and is returned
+     */
     public int pullCard() {
         Random rand = new Random();
-        boolean cardPulled = false;
+        boolean cardPulled = true;
         int randNum = rand.nextInt(fullDeck.size());
-        for(int i = 0; i<pulledCards.size(); i++){
-            if(randNum == pulledCards.get(i)){
-                cardPulled = true;
-                break;
+        while (cardPulled) {
+            for (int i = 0; i < pulledCards.size(); i++) {
+                if (randNum == pulledCards.get(i)) {
+                    randNum = rand.nextInt(fullDeck.size());
+                    break;
+                } else if (i == pulledCards.size() - 1 && cardPulled) {
+                    pulledCards.add(randNum);
+                    return randNum;
+                }
             }
         }
-        if(!cardPulled){
-        pulledCards.add(randNum);
-        return randNum;}
-        else if (cardPulled){
-        }
+        return 60;
     }
 
     /**
-     *
      * @return the current size of the deck
      */
     public int remainingCards() {
@@ -56,10 +60,15 @@ public class Deck {
 
     /**
      * find what card you have
+     *
      * @param cardIndex the card you're trying to get
      * @return the PlayingCard that you gave the cardIndex of
      */
-    public PlayingCard whatCard(int cardIndex){
-        return fullDeck.get(cardIndex);
+    public PlayingCard whatCard(int cardIndex) {
+        if (cardIndex == 60) {
+            return null;
+        } else {
+            return fullDeck.get(cardIndex);
+        }
     }
 }
