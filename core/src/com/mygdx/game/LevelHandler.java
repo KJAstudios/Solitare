@@ -1,11 +1,13 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class LevelHandler {
+public class LevelHandler implements Screen{
 
     public Deck gameDeck;
     public List<LevelStack> levelStacks;
@@ -13,14 +15,18 @@ public class LevelHandler {
     public LevelStack mainDeck;
     private Deck refDeck;
     private Texture backTexture;
+    private Sprite cardBacks;
+    private SolitareMain main;
 
-    LevelHandler(String levelType){
+    LevelHandler(String levelType, SolitareMain main){
         gameDeck = new Deck();
         refDeck = new Deck();
         levelStacks = new ArrayList<>();
         finishStacks = new ArrayList<>();
         mainDeck = new LevelStack(4);
         LevelLoader.loadLevel(levelType, this);
+        cardBacks = new Sprite(new Texture("test_back.jpg"));
+        this.main = main;
     }
 
     public PlayingCard getCard(int cardIndex){
@@ -40,4 +46,38 @@ public class LevelHandler {
         return null;
     }
 
+    @Override
+    public void show() {
+
+    }
+
+    @Override
+    public void render(float delta) {
+        main.batch.draw(cardBacks.getTexture(), 0, 0);
+    }
+
+    @Override
+    public void resize(int width, int height) {
+
+    }
+
+    @Override
+    public void pause() {
+
+    }
+
+    @Override
+    public void resume() {
+
+    }
+
+    @Override
+    public void hide() {
+
+    }
+
+    @Override
+    public void dispose() {
+
+    }
 }
