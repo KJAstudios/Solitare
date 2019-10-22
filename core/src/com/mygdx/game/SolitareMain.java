@@ -14,17 +14,12 @@ public class SolitareMain extends Game {
     public void create() {
         batch = new SpriteBatch();
         img = new Texture("test_back.jpg");
-        this.setScreen(new LevelHandler("Standard", this));
+        this.setScreen(new LevelHandler("Standard",this));
     }
 
     @Override
     public void render() {
         super.render();
-        Gdx.gl.glClearColor(1, 0, 0, 1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        batch.begin();
-       // batch.draw(img, 0, 0);
-        batch.end();
     }
 
     @Override
