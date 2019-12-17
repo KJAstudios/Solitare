@@ -1,11 +1,11 @@
-package com.mygdx.game;
+package com.mygdx.cardstructures;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
 import java.util.List;
 
-public class LevelStack {
+public class LevelStack implements CardStack {
     Deque<Integer> cardBacks;
     List<Integer> cardFronts;
     int stackNumber;

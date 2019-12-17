@@ -1,4 +1,4 @@
-package com.mygdx.game;
+package com.mygdx.cardstructures;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,13 +6,13 @@ import java.util.Random;
 
 public class Deck {
 
-    List<PlayingCard> fullDeck;
-    List<Integer> pulledCards;
+    private List<PlayingCard> fullDeck;
+    private List<Integer> pulledCards;
 
     /**
      * when a Deck object is created, it automatically creates a full deck of 52 cards
      */
-    Deck() {
+    public Deck() {
         fullDeck = new ArrayList<>();
         pulledCards = new ArrayList<>();
         for (int i = 0; i < 4; i++) {
@@ -26,49 +26,36 @@ public class Deck {
     /**
      * returns a random unique card from the current deck
      *
-     * @return
+     * @return playingCard
      */
     /*
     when the function is called, sets cardPulled to true, then checks if the card that was pulled by randnum has
     already been pulled. if it has, it draws a new card and runs down the list again. if it reaches the end of the list
     and has not gotten a hit, then the card hasn't been pulled and is returned
      */
-    public int pullCard() {
+    public PlayingCard pullCard() {
         Random rand = new Random();
-        boolean cardPulled = true;
         int randNum = rand.nextInt(fullDeck.size());
-        while (cardPulled) {
-            for (int i = 0; i < pulledCards.size(); i++) {
-                if (randNum == pulledCards.get(i)) {
-                    randNum = rand.nextInt(fullDeck.size());
-                    break;
-                } else if (i == pulledCards.size() - 1 && cardPulled) {
-                    pulledCards.add(randNum);
-                    return randNum;
-                }
+        for (int i = 0; i < pulledCards.size(); i++) {
+            if (randNum == pulledCards.get(i)) {
+                randNum=rand.nextInt(fullDeck.size());
+                i=0;
+            }
+            else if(pulledCards.size()==52){
+                return null;
+            }
+            else{
+                pulledCards.add(i);
+                return fullDeck.get(i);
             }
         }
-        return 60;
+        return null;
     }
 
     /**
      * @return the current size of the deck
      */
     public int remainingCards() {
-        return fullDeck.size();
-    }
-
-    /**
-     * find what card you have
-     *
-     * @param cardIndex the card you're trying to get
-     * @return the PlayingCard that you gave the cardIndex of
-     */
-    public PlayingCard whatCard(int cardIndex) {
-        if (cardIndex == 60) {
-            return null;
-        } else {
-            return fullDeck.get(cardIndex);
-        }
+        return 52-pulledCards.size();
     }
 }

@@ -1,10 +1,14 @@
-package com.mygdx.game;
+package com.mygdx.gameplayhandlers;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.mygdx.cardstructures.Deck;
+import com.mygdx.cardstructures.LevelStack;
+import com.mygdx.cardstructures.PlayingCard;
+import com.mygdx.game.SolitareMain;
 
 import java.util.ArrayList;
 import java.util.List;

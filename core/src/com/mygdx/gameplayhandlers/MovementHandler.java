@@ -1,4 +1,7 @@
-package com.mygdx.game;
+package com.mygdx.gameplayhandlers;
+
+import com.mygdx.cardstructures.LevelStack;
+import com.mygdx.gameplayhandlers.LevelHandler;
 
 import java.util.LinkedList;
 import java.util.List;
