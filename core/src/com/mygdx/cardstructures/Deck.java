@@ -36,18 +36,23 @@ public class Deck {
     public PlayingCard pullCard() {
         Random rand = new Random();
         int randNum = rand.nextInt(fullDeck.size());
-        for (int i = 0; i < pulledCards.size(); i++) {
-            if (randNum == pulledCards.get(i)) {
-                randNum=rand.nextInt(fullDeck.size());
-                i=0;
+        int i = 0;
+        boolean cardPulled = true;
+        while (cardPulled) {
+            do {
+                if (pulledCards.isEmpty() == false){
+                    if(randNum == pulledCards.get(i)){
+                        randNum = rand.nextInt(fullDeck.size());
+                        i = 0;
+                    }
+                } else if (pulledCards.size() >= 52) {
+                    return null;
+                }
+                i++;
             }
-            else if(pulledCards.size()==52){
-                return null;
-            }
-            else{
-                pulledCards.add(i);
-                return fullDeck.get(i);
-            }
+            while (i < pulledCards.size());
+            pulledCards.add(randNum);
+            return fullDeck.get(randNum);
         }
         return null;
     }
