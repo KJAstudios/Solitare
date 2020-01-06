@@ -18,7 +18,7 @@ public class LevelHandler {
     public FacedownStack mainDeck;
 
 
-    LevelHandler(String levelType, SolitareMain main) {
+    public LevelHandler(String levelType, SolitareMain main) {
         gameDeck = new Deck();
         levelStacks = new ArrayList<>();
         unplayedStacks = new ArrayList<>();

@@ -25,20 +25,6 @@ public class LevelLoader {
              * then add the face down cards, then the single face up card
              * then create the data storage for the upper row of cards
              */
-            case "Standard": {
-                for (int i = 0; i < 7; i++) {
-                    outputLevel.levelStacks.add(new LevelStack(i + 5));
-                }
-                for (int i = 1; i <= 6; i++) {
-                    addCardToStack(i, i);
-                }
-                for (int i = 0; i < 7; i++) {
-                    outputLevel.levelStacks.get(i).addFUCard(shuffleDeck.pullCard());
-                }
-                createFinishStacks();
-                createMainDeck();
-                outputLevel.setBackTexture("test_back.png");
-            }
         }
     }
 
@@ -49,18 +35,14 @@ public class LevelLoader {
      * @param numCards the number of face down cards to place in the stack
      */
     private static void addCardToStack(int stackNum, int numCards) {
-        for (int i = 0; i < numCards; i++) {
-            outputLevel.levelStacks.get(stackNum).addFDCard(shuffleDeck.pullCard());
-        }
+
     }
 
     /**
      * createFinishStacks creates the top four finishing stacks at for the game
      */
     private static void createFinishStacks() {
-        for (int i = 0; i < 4; i++) {
-            outputLevel.finishStacks.add(new LevelStack(i));
-        }
+
     }
 
     /**
@@ -68,8 +50,6 @@ public class LevelLoader {
      * part of the starting deal
      */
     private static void createMainDeck() {
-        for (int i = 0; i < shuffleDeck.remainingCards(); i++) {
-            outputLevel.mainDeck.addFDCard(shuffleDeck.pullCard());
-        }
+
     }
 }
