@@ -8,13 +8,10 @@ import com.mygdx.screens.GameScreen;
 
 public class SolitareMain extends Game {
     public SpriteBatch batch;
-    Texture img;
 
     //TODO currently set to a single screen, needs menus and menu handlers
     @Override
     public void create() {
-        batch = new SpriteBatch();
-        img = new Texture("test_back.jpg");
         GameScreen mainScreen = new GameScreen();
         mainScreen.buildStage();
         this.setScreen(mainScreen);
@@ -27,7 +24,5 @@ public class SolitareMain extends Game {
 
     @Override
     public void dispose() {
-        batch.dispose();
-        img.dispose();
     }
 }

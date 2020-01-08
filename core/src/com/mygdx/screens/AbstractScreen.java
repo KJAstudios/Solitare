@@ -9,7 +9,7 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
 public abstract class AbstractScreen extends Stage implements Screen {
 
-    protected AbstractScreen(){
+    protected AbstractScreen() {
         super(new ScreenViewport(new OrthographicCamera()));
     }
 
@@ -17,7 +17,8 @@ public abstract class AbstractScreen extends Stage implements Screen {
 
     /**
      * render overide for stage
-      * @param delta
+     *
+     * @param delta
      */
     @Override
     public void render(float delta) {
@@ -37,10 +38,18 @@ public abstract class AbstractScreen extends Stage implements Screen {
 
     @Override
     public void resize(int width, int height) {
-
+        getViewport().update(width, height, true);
     }
 
-    @Override public void pause() {}
-    @Override public void resume() {}
-    @Override public void hide() {}
+    @Override
+    public void pause() {
+    }
+
+    @Override
+    public void resume() {
+    }
+
+    @Override
+    public void hide() {
+    }
 }

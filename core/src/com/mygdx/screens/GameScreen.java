@@ -1,18 +1,27 @@
 package com.mygdx.screens;
 
 import com.mygdx.cardstructures.CardActor;
+import com.mygdx.cardstructures.Deck;
 import com.mygdx.cardstructures.PlayingCard;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GameScreen extends AbstractScreen {
 
     private CardActor card;
+    private List<CardActor> cardList;
 
     /**
      * constructor
      */
-    public GameScreen(){
+    public GameScreen() {
         super();
-        card = new CardActor(new PlayingCard(0, 0));
+        cardList = new ArrayList<>();
+        Deck deck = new Deck();
+        for(int i = 0; i < 52; i ++){
+            cardList.add(new CardActor(deck.pullCard()));
+        }
     }
 
     /**
@@ -21,6 +30,11 @@ public class GameScreen extends AbstractScreen {
     //TODO get this running with levelhandler and levelloader
     @Override
     public void buildStage() {
-        addActor(card.getImage());
+        for(int i = 0; i <52; i++){
+            CardActor actor = cardList.get(i);
+            actor.setPosition(i+(i*15), 0);
+            actor.setScale(0.3f);
+            addActor(actor);
+        }
     }
 }

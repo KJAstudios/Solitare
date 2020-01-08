@@ -16,7 +16,7 @@ public class Deck {
         fullDeck = new ArrayList<>();
         pulledCards = new ArrayList<>();
         for (int i = 0; i < 4; i++) {
-            for (int i2 = 0; i < 13; i++) {
+            for (int i2 = 0; i2 < 13; i2++) {
                 PlayingCard tempCard = new PlayingCard(i2, i);
                 fullDeck.add(tempCard);
             }
