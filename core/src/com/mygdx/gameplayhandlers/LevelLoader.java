@@ -1,8 +1,10 @@
 package com.mygdx.gameplayhandlers;
 
 
-import com.mygdx.cardstructures.Deck;
-import com.mygdx.gameplayhandlers.LevelHandler;
+import com.mygdx.cardstructures.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class LevelLoader {
 
@@ -10,39 +12,60 @@ public class LevelLoader {
     private static Deck shuffleDeck;
 
     /**
-     * LevelLoader handles the game information for a set level configuration
+     * LevelLoader.loadLevel handles the game information for a set level configuration
      */
-    LevelLoader() {
-
-    }
-
-    public static void loadLevel(String levelType, LevelHandler inLevel) {
+    public static void loadLevel(LevelHandler inLevel) {
         outputLevel = inLevel;
         shuffleDeck = new Deck();
-        switch (levelType) {
-            /**
-             * creates the stacks of cards that comprise the main playing field
-             * then add the face down cards, then the single face up card
-             * then create the data storage for the upper row of cards
-             */
+        dealFUCards();
+        dealFDCards();
+        createAceStacks();
+        //must happen last
+        createMainDeck();
+    }
+
+    /**
+     * deals the face up cards seen at the start of a round
+     */
+    private static void dealFUCards() {
+        List<FaceupStack> stacks = new ArrayList<>();
+        for (int i = 0; i < 7; i++) {
+            FaceupStack tempStack = new FaceupStack(i);
+            tempStack.addCard(new CardActor(shuffleDeck.pullCard()));
+            stacks.add(tempStack);
         }
+        outputLevel.setFUStacks(stacks);
     }
 
     /**
-     * addCardToStack is a function to create stacks of face down cards
-     *
-     * @param stackNum which stack in the level to place the cards
-     * @param numCards the number of face down cards to place in the stack
+     * deals the face down cards seen at the start of the round
      */
-    private static void addCardToStack(int stackNum, int numCards) {
+    private static void dealFDCards() {
+        List<FacedownStack> stacks = new ArrayList<>();
+        for (int i = 0; i < 7; i++) {
+            if (i != 0) {
 
+                FacedownStack tempStack = new FacedownStack(i);
+                for (int i2 = 0; i2 < i; i2++) {
+                    tempStack.addCard(shuffleDeck.pullCard());
+                }
+                stacks.add(tempStack);
+            } else {
+                stacks.add(new FacedownStack(i));
+            }
+        }
+        outputLevel.setFDStacks(stacks);
     }
 
     /**
-     * createFinishStacks creates the top four finishing stacks at for the game
+     * createAceStacks creates the top four finishing stacks for the game
      */
-    private static void createFinishStacks() {
-
+    private static void createAceStacks() {
+        List<FaceupStack> aceStacks = new ArrayList<>();
+        for (int i = 0; i < 4; i++) {
+            aceStacks.add(new FaceupStack(i));
+        }
+        outputLevel.setAceStacks(aceStacks);
     }
 
     /**
@@ -50,6 +73,10 @@ public class LevelLoader {
      * part of the starting deal
      */
     private static void createMainDeck() {
-
+        List<CardActor> remCards = new ArrayList<>();
+        for (int i = 0; i < shuffleDeck.remainingCards(); i++) {
+            remCards.add(new CardActor(shuffleDeck.pullCard()));
+        }
+        outputLevel.setMainDeck(remCards);
     }
 }

@@ -9,12 +9,14 @@ public class DeckStack {
 
     /**
      * constructor
+     *
      * @param cardsIn cards to put in the remaining deck
      */
     //TODO add input management
-    public DeckStack(List<CardActor> cardsIn){
-        for(CardActor card : cardsIn){
-        fdStack.addCard(card);
+    //TODO add coordinates for location on screen
+    public DeckStack(List<CardActor> cardsIn) {
+        for (CardActor card : cardsIn) {
+            fdStack.addCard(card);
         }
     }
 }

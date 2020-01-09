@@ -40,8 +40,8 @@ public class Deck {
         boolean cardPulled = true;
         while (cardPulled) {
             do {
-                if (pulledCards.isEmpty() == false){
-                    if(randNum == pulledCards.get(i)){
+                if (pulledCards.isEmpty() == false) {
+                    if (randNum == pulledCards.get(i)) {
                         randNum = rand.nextInt(fullDeck.size());
                         i = 0;
                     }
@@ -61,6 +61,6 @@ public class Deck {
      * @return the current size of the deck
      */
     public int remainingCards() {
-        return 52-pulledCards.size();
+        return 52 - pulledCards.size();
     }
 }
