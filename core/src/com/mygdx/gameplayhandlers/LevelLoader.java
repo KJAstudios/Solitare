@@ -1,8 +1,6 @@
 package com.mygdx.gameplayhandlers;
 
-
 import com.mygdx.cardstructures.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,30 +15,43 @@ public class LevelLoader {
     public static void loadLevel(LevelHandler inLevel) {
         outputLevel = inLevel;
         shuffleDeck = new Deck();
-        dealFUCards();
-        dealFDCards();
+        deal();
         createAceStacks();
         //must happen last
         createMainDeck();
     }
 
     /**
+     * deal creates LevelStacks for the level being created
+     */
+    private static void deal() {
+        List<FaceupStack> fuStacks = dealFUCards();
+        List<FacedownStack> fdStacks = dealFDCards();
+        List<LevelStack> outStacks = new ArrayList<>();
+        for (int i = 0; i < fuStacks.size(); i++) {
+            outStacks.add(new LevelStack(fuStacks.get(i), fdStacks.get(i)));
+        }
+        outputLevel.setLevelStacks(outStacks);
+    }
+
+    /**
      * deals the face up cards seen at the start of a round
      */
-    private static void dealFUCards() {
+    private static List<FaceupStack> dealFUCards() {
         List<FaceupStack> stacks = new ArrayList<>();
         for (int i = 0; i < 7; i++) {
             FaceupStack tempStack = new FaceupStack(i);
             tempStack.addCard(new CardActor(shuffleDeck.pullCard()));
             stacks.add(tempStack);
         }
-        outputLevel.setFUStacks(stacks);
+        return stacks;
     }
+
 
     /**
      * deals the face down cards seen at the start of the round
      */
-    private static void dealFDCards() {
+    private static List<FacedownStack> dealFDCards() {
         List<FacedownStack> stacks = new ArrayList<>();
         for (int i = 0; i < 7; i++) {
             if (i != 0) {
@@ -54,7 +65,7 @@ public class LevelLoader {
                 stacks.add(new FacedownStack(i));
             }
         }
-        outputLevel.setFDStacks(stacks);
+        return stacks;
     }
 
     /**
