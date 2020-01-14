@@ -25,5 +25,7 @@ public class LevelRenderer {
      */
     private static void renderStacks() {
         StackRenderer.renderStack(level.getLevelStacks(), screen);
+        StackRenderer.renderFDDeckStack(level.getMainDeck(), screen);
+        StackRenderer.renderFUDeckStack(level.getMainDeck(), screen);
     }
 }

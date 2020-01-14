@@ -1,14 +1,20 @@
 package com.mygdx.cardstructures;
 
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+
 import java.util.List;
 
 public class DeckStack {
 
     private FacedownDeckStack fdStack;
     private FaceupStack fuStack;
+    private Image backImage;
 
-    private int x;
-    private int y;
+    private float fdX;
+    private float fdY;
+    private float fuX;
+    private float fuY;
 
     /**
      * constructor
@@ -17,34 +23,65 @@ public class DeckStack {
      */
     //TODO add input management
     //TODO add coordinates for location on screen
-    public DeckStack(List<CardActor> cardsIn) {
-            for (CardActor card : cardsIn) {
-                try {
-                    fdStack.addCard(card);
-                }catch(NullPointerException e){
+    public DeckStack(List<CardActor> cardsIn, Texture texture) {
+        for (CardActor card : cardsIn) {
+            try {
+                fdStack.addCard(card);
+            } catch (NullPointerException e) {
 
-                }
             }
+        }
+        backImage = new Image(texture);
     }
 
     /**
      * getters and setters for xy locations
      */
-    public int getX() {
-        return x;
+    public float getFdX() {
+        return fdX;
     }
 
-    public void setX(int x) {
-        this.x = x;
+    public void setFdX(float fdX) {
+        this.fdX = fdX;
     }
 
-    public int getY() {
-        return y;
+    public float getFdY() {
+        return fdY;
     }
 
-    public void setY(int y) {
-        this.y = y;
+    public void setFdY(float fdY) {
+        this.fdY = fdY;
     }
 
+    public float getFuX() {
+        return fuX;
+    }
+
+    public void setFuX(float fuX) {
+        this.fuX = fuX;
+    }
+
+    public float getFuY() {
+        return fuY;
+    }
+
+    public void setFuY(float fuY) {
+        this.fuY = fuY;
+    }
+
+    /**
+     * getters for rendering purposes
+     */
+    public FacedownDeckStack getFdStack() {
+        return fdStack;
+    }
+
+    public FaceupStack getFuStack() {
+        return fuStack;
+    }
+
+    public Image getBackImage() {
+        return backImage;
+    }
 }
 

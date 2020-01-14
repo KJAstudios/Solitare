@@ -3,7 +3,7 @@ package com.mygdx.cardstructures;
 import java.util.ArrayList;
 import java.util.List;
 
-//TODO add coordinates for location on screen
+
 public class FaceupStack extends BaseStack {
     private List<CardActor> stack;
     private float x;

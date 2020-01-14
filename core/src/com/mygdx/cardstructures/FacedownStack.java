@@ -3,7 +3,6 @@ package com.mygdx.cardstructures;
 import java.util.Stack;
 
 public class FacedownStack extends BaseStack {
-    //TODO add coordinates for location on screen
     private Stack<PlayingCard> stack;
     private float x;
     private float y;

@@ -1,5 +1,6 @@
 package com.mygdx.gameplayhandlers;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.mygdx.cardstructures.LevelStack;
 import com.mygdx.screens.GameScreen;
@@ -24,24 +25,27 @@ public class CoordinateHandler {
         }
         updateLevelStackCardPositions(level);
         updateCardScale(screen);
+        setDeckStackPosition();
     }
 
     /**
      * create the scale of the cards based on the size of the screen
+     *
      * @return
      */
     //TODO figure out how to scale based on screen size, important for android
-    private static float getCardScale(){
-        float edgePadding = screen.getWidth()*0.05f;
+    private static float getCardScale() {
+        float edgePadding = screen.getWidth() * 0.05f;
         float scale = 0.2f;
         return scale;
     }
 
     /**
      * updates the scale for all cards on the screen dependent on the size of the current screen
+     *
      * @param screen
      */
-    public static void updateCardScale(GameScreen screen){
+    public static void updateCardScale(GameScreen screen) {
         float scale = getCardScale();
         List<LevelStack> stacks = level.getLevelStacks();
         for (LevelStack stack : stacks) {
@@ -57,6 +61,7 @@ public class CoordinateHandler {
                 stack.getFuStack().getStack().get(c).setScale(scale);
             }
         }
+        level.getMainDeck().getBackImage().setScale(scale);
 
     }
 
@@ -67,7 +72,7 @@ public class CoordinateHandler {
      */
     private static float[] generateLevelStackPositions() {
         float screenX = screen.getWidth();
-        float edgePadding = screen.getWidth()*0.05f;
+        float edgePadding = screen.getWidth() * 0.05f;
         float[] lStackX = new float[7];
         float spacing = screenX - (edgePadding * 2);
         spacing /= 7;
@@ -107,5 +112,19 @@ public class CoordinateHandler {
                 y -= 24;
             }
         }
+    }
+
+    /**
+     * sets the position of DeckStack
+     */
+    public static void setDeckStackPosition() {
+        Float mainX = screen.getWidth();
+        mainX *= 0.25f;
+        mainX = screen.getWidth() - mainX;
+        level.getMainDeck().setFdX(mainX);
+        level.getMainDeck().setFdY(screen.getHeight() - (screen.getHeight() * 0.25f));
+        level.getMainDeck().setFuX(level.getMainDeck().getFdX() - new Texture("test_back2.jpg").getWidth());
+        level.getMainDeck().setFuY(screen.getHeight() - (screen.getHeight() * 0.25f));
+        level.getMainDeck().getBackImage().setPosition(level.getMainDeck().getFdX(), level.getMainDeck().getFdY());
     }
 }

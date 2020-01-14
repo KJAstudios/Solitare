@@ -39,7 +39,7 @@ public class LevelHandler {
 
 
     public void setMainDeck(List<CardActor> inList) {
-        mainDeck = new DeckStack(inList);
+        mainDeck = new DeckStack(inList, deckBack);
     }
 
     public void setAceStacks(List<FaceupStack> aceStacks) {
