@@ -1,6 +1,8 @@
 package com.mygdx.gameplayhandlers;
 
 import com.mygdx.cardstructures.*;
+import com.mygdx.screens.GameScreen;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,17 +10,20 @@ public class LevelLoader {
 
     private static LevelHandler outputLevel;
     private static Deck shuffleDeck;
+    private static GameScreen screen;
 
     /**
      * LevelLoader.loadLevel handles the game information for a set level configuration
      */
-    public static void loadLevel(LevelHandler inLevel) {
+    public static void loadLevel(LevelHandler inLevel, GameScreen inScreen) {
         outputLevel = inLevel;
         shuffleDeck = new Deck();
+        screen = inScreen;
         deal();
         createAceStacks();
         //must happen last
         createMainDeck();
+        CoordinateHandler.setRenderCoords(screen, outputLevel);
     }
 
     /**
@@ -29,7 +34,7 @@ public class LevelLoader {
         List<FacedownStack> fdStacks = dealFDCards();
         List<LevelStack> outStacks = new ArrayList<>();
         for (int i = 0; i < fuStacks.size(); i++) {
-            outStacks.add(new LevelStack(fuStacks.get(i), fdStacks.get(i)));
+            outStacks.add(new LevelStack(fuStacks.get(i), fdStacks.get(i), outputLevel.getDeckBack()));
         }
         outputLevel.setLevelStacks(outStacks);
     }
@@ -41,7 +46,9 @@ public class LevelLoader {
         List<FaceupStack> stacks = new ArrayList<>();
         for (int i = 0; i < 7; i++) {
             FaceupStack tempStack = new FaceupStack(i);
-            tempStack.addCard(new CardActor(shuffleDeck.pullCard()));
+            CardActor tempActor = new CardActor(shuffleDeck.pullCard());
+            tempActor.setScale(0.2f);
+            tempStack.addCard(tempActor);
             stacks.add(tempStack);
         }
         return stacks;
@@ -85,9 +92,12 @@ public class LevelLoader {
      */
     private static void createMainDeck() {
         List<CardActor> remCards = new ArrayList<>();
+        int test = shuffleDeck.remainingCards();
         for (int i = 0; i < shuffleDeck.remainingCards(); i++) {
             remCards.add(new CardActor(shuffleDeck.pullCard()));
         }
         outputLevel.setMainDeck(remCards);
     }
+
+
 }

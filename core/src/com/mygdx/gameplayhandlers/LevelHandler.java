@@ -1,5 +1,7 @@
 package com.mygdx.gameplayhandlers;
 
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.mygdx.cardstructures.*;
 import com.mygdx.renderers.LevelRenderer;
 import com.mygdx.screens.GameScreen;
@@ -7,9 +9,11 @@ import com.mygdx.screens.GameScreen;
 import java.util.List;
 
 public class LevelHandler {
+
     private DeckStack mainDeck;
     private List<FaceupStack> aceStacks;
     private List<LevelStack> levelStacks;
+    private Texture deckBack;
 
     /**
      * constructor
@@ -17,7 +21,8 @@ public class LevelHandler {
      * @param screen the GameScreen to render on
      */
     public LevelHandler(GameScreen screen) {
-        LevelLoader.loadLevel(this);
+        deckBack = new Texture("test_back2.jpg");
+        LevelLoader.loadLevel(this, screen);
         LevelRenderer.renderLevel(screen, this);
 
     }
@@ -41,5 +46,25 @@ public class LevelHandler {
         this.aceStacks = aceStacks;
     }
 
-}
+    /**
+     * getters for rendering purposes
+     *
+     * @return
+     */
 
+    public DeckStack getMainDeck() {
+        return mainDeck;
+    }
+
+    public List<FaceupStack> getAceStacks() {
+        return aceStacks;
+    }
+
+    public List<LevelStack> getLevelStacks() {
+        return levelStacks;
+    }
+
+    public Texture getDeckBack() {
+        return deckBack;
+    }
+}

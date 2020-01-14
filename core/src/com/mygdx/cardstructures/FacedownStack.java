@@ -5,8 +5,8 @@ import java.util.Stack;
 public class FacedownStack extends BaseStack {
     //TODO add coordinates for location on screen
     private Stack<PlayingCard> stack;
-    private int x;
-    private int y;
+    private float x;
+    private float y;
 
     /**
      * sets the index of the stack
@@ -45,19 +45,26 @@ public class FacedownStack extends BaseStack {
     /**
      * getters and setters for xy locations
      */
-    public int getX() {
+    public float getX() {
         return x;
     }
 
-    public void setX(int x) {
+    public void setX(float x) {
         this.x = x;
     }
 
-    public int getY() {
+    public float getY() {
         return y;
     }
 
-    public void setY(int y) {
+    public void setY(float y) {
         this.y = y;
+    }
+
+    /**
+     * getter for rendering
+     */
+    public Stack<PlayingCard> getStack() {
+        return stack;
     }
 }

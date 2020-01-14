@@ -18,9 +18,13 @@ public class DeckStack {
     //TODO add input management
     //TODO add coordinates for location on screen
     public DeckStack(List<CardActor> cardsIn) {
-        for (CardActor card : cardsIn) {
-            fdStack.addCard(card);
-        }
+            for (CardActor card : cardsIn) {
+                try {
+                    fdStack.addCard(card);
+                }catch(NullPointerException e){
+
+                }
+            }
     }
 
     /**

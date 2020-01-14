@@ -6,8 +6,8 @@ import java.util.List;
 //TODO add coordinates for location on screen
 public class FaceupStack extends BaseStack {
     private List<CardActor> stack;
-    private int x;
-    private int y;
+    private float x;
+    private float y;
 
     /**
      * sets the index of the stack
@@ -61,19 +61,26 @@ public class FaceupStack extends BaseStack {
     /**
      * getters and setters for xy locations
      */
-    public int getX() {
+    public float getX() {
         return x;
     }
 
-    public void setX(int x) {
+    public void setX(float x) {
         this.x = x;
     }
 
-    public int getY() {
+    public float getY() {
         return y;
     }
 
-    public void setY(int y) {
+    public void setY(float y) {
         this.y = y;
+    }
+
+    /**
+     * getter for rendering
+     */
+    public List<CardActor> getStack() {
+        return stack;
     }
 }

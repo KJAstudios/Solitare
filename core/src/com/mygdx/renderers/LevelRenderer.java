@@ -17,9 +17,13 @@ public class LevelRenderer {
     public static void renderLevel(GameScreen inScreen, LevelHandler inLevel) {
         screen = inScreen;
         level = inLevel;
+        renderStacks();
     }
 
+    /**
+     * renders each of the stacks in the game
+     */
     private static void renderStacks() {
-
+        StackRenderer.renderStack(level.getLevelStacks(), screen);
     }
 }
