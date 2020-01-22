@@ -15,6 +15,7 @@ public class StackRenderer {
      * @param screen      screen to render on
      */
     public static void renderFDDeckStack(DeckStack renderStack, GameScreen screen) {
+        renderStack.getBackImage().setName("deckBack");
         screen.addActor(renderStack.getBackImage());
     }
 
@@ -25,13 +26,8 @@ public class StackRenderer {
      * @param screen      screen to render on
      */
     public static void renderFUDeckStack(DeckStack renderStack, GameScreen screen) {
-
-        try {
-            if (renderStack.getFuStack().getStack() != null) {
-                screen.addActor(renderStack.getFuStack().getStack().get(renderStack.getFuStack().getStack().size() - 1));
-            }
-        } catch (NullPointerException e) {
-
+        if (renderStack.getFuStack().getStack() != null) {
+            screen.addActor(renderStack.getFuStack().getStack().get(renderStack.getFuStack().getStack().size() - 1));
         }
     }
 

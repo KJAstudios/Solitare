@@ -10,6 +10,7 @@ public class DeckStack {
     private FacedownDeckStack fdStack;
     private FaceupStack fuStack;
     private Image backImage;
+    private final int index;
 
     private float fdX;
     private float fdY;
@@ -24,6 +25,9 @@ public class DeckStack {
     //TODO add input management
     //TODO add coordinates for location on screen
     public DeckStack(List<CardActor> cardsIn, Texture texture) {
+        index = 00;
+        fdStack = new FacedownDeckStack(index);
+        fuStack = new FaceupStack(index);
         for (CardActor card : cardsIn) {
             try {
                 fdStack.addCard(card);
@@ -82,6 +86,15 @@ public class DeckStack {
 
     public Image getBackImage() {
         return backImage;
+    }
+
+    public void addTestCard() {
+        //test code follows
+        CardActor card = fdStack.getCard();
+        card.setX(fuX);
+        card.setY(fdX);
+        card.setScale(0.2f);
+        fuStack.addCard(card);
     }
 }
 

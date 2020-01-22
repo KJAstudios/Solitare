@@ -25,6 +25,7 @@ public class CardActor extends Image {
         super(new Texture("cards/" + card.getCardVal() + card.getSuitVal() + ".png"));
         cardVal = card.getCardVal();
         suitVal = card.getSuitVal();
+        setName(Integer.toString(cardVal)+Integer.toString(suitVal));
     }
 
     /**

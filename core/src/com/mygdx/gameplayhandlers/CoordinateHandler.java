@@ -123,7 +123,7 @@ public class CoordinateHandler {
         mainX = screen.getWidth() - mainX;
         level.getMainDeck().setFdX(mainX);
         level.getMainDeck().setFdY(screen.getHeight() - (screen.getHeight() * 0.25f));
-        level.getMainDeck().setFuX(level.getMainDeck().getFdX() - new Texture("test_back2.jpg").getWidth());
+        level.getMainDeck().setFuX(level.getMainDeck().getFdX() - (new Texture("test_back2.jpg").getWidth() * 0.2f));
         level.getMainDeck().setFuY(screen.getHeight() - (screen.getHeight() * 0.25f));
         level.getMainDeck().getBackImage().setPosition(level.getMainDeck().getFdX(), level.getMainDeck().getFdY());
     }

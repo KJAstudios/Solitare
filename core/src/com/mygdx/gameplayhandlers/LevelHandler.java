@@ -1,8 +1,10 @@
 package com.mygdx.gameplayhandlers;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.mygdx.cardstructures.*;
+import com.mygdx.cardstructures.CardActor;
+import com.mygdx.cardstructures.DeckStack;
+import com.mygdx.cardstructures.FaceupStack;
+import com.mygdx.cardstructures.LevelStack;
 import com.mygdx.renderers.LevelRenderer;
 import com.mygdx.screens.GameScreen;
 
