@@ -16,6 +16,7 @@ public class LevelHandler {
     private List<FaceupStack> aceStacks;
     private List<LevelStack> levelStacks;
     private Texture deckBack;
+    private ActorHandler actorHandler;
 
     /**
      * constructor
@@ -23,6 +24,7 @@ public class LevelHandler {
      * @param screen the GameScreen to render on
      */
     public LevelHandler(GameScreen screen) {
+        actorHandler = new ActorHandler(screen);
         deckBack = new Texture("test_back2.jpg");
         LevelLoader.loadLevel(this, screen);
         LevelRenderer.renderLevel(screen, this);

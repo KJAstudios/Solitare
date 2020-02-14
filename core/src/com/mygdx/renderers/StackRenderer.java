@@ -26,7 +26,7 @@ public class StackRenderer {
      * @param screen      screen to render on
      */
     public static void renderFUDeckStack(DeckStack renderStack, GameScreen screen) {
-        if (renderStack.getFuStack().getStack() != null) {
+        if (renderStack.getFuStack().getStack() != null && renderStack.getFuStack().getStack().size() != 0) {
             screen.addActor(renderStack.getFuStack().getStack().get(renderStack.getFuStack().getStack().size() - 1));
         }
     }
@@ -47,7 +47,7 @@ public class StackRenderer {
      * @param renderStacks LevelStacks to render
      * @param screen       screen to render on
      */
-    public static void renderStack(List<LevelStack> renderStacks, GameScreen screen) {
+    public static void renderLevelStacks(List<LevelStack> renderStacks, GameScreen screen) {
         for (int i = 0; i < renderStacks.size(); i++) {
             LevelStack lStack = renderStacks.get(i);
             if (lStack.getFdCards() != null) {

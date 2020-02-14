@@ -24,8 +24,9 @@ public class LevelRenderer {
      * renders each of the stacks in the game
      */
     private static void renderStacks() {
-        StackRenderer.renderStack(level.getLevelStacks(), screen);
+        StackRenderer.renderLevelStacks(level.getLevelStacks(), screen);
         StackRenderer.renderFDDeckStack(level.getMainDeck(), screen);
         StackRenderer.renderFUDeckStack(level.getMainDeck(), screen);
     }
+
 }

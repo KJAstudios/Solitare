@@ -1,12 +1,9 @@
 package com.mygdx.screens;
 
 import com.mygdx.cardstructures.CardActor;
-import com.mygdx.cardstructures.Deck;
 import com.mygdx.gameplayhandlers.CoordinateHandler;
 import com.mygdx.gameplayhandlers.LevelHandler;
-import com.mygdx.renderers.StackRenderer;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class GameScreen extends AbstractScreen {
