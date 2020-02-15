@@ -1,21 +1,21 @@
 package com.mygdx.renderers;
 
+import com.mygdx.gameplayhandlers.ActorHandler;
 import com.mygdx.gameplayhandlers.LevelHandler;
-import com.mygdx.screens.GameScreen;
 
 public class LevelRenderer {
 
-    private static GameScreen screen;
+    private static ActorHandler actorHandler;
     private static LevelHandler level;
 
     /**
      * constructor
      *
-     * @param inScreen the screen to render on
-     * @param inLevel  the level to render
+     * @param actorHandler the actorHandler to add actors to
+     * @param inLevel      the level to render
      */
-    public static void renderLevel(GameScreen inScreen, LevelHandler inLevel) {
-        screen = inScreen;
+    public static void renderLevel(ActorHandler actorHandler, LevelHandler inLevel) {
+        LevelRenderer.actorHandler = actorHandler;
         level = inLevel;
         renderStacks();
     }
@@ -24,9 +24,9 @@ public class LevelRenderer {
      * renders each of the stacks in the game
      */
     private static void renderStacks() {
-        StackRenderer.renderLevelStacks(level.getLevelStacks(), screen);
-        StackRenderer.renderFDDeckStack(level.getMainDeck(), screen);
-        StackRenderer.renderFUDeckStack(level.getMainDeck(), screen);
+        StackRenderer.renderLevelStacks(level.getLevelStacks(), actorHandler);
+        StackRenderer.renderFDDeckStack(level.getMainDeck(), actorHandler);
+        StackRenderer.renderFUDeckStack(level.getMainDeck(), actorHandler);
     }
 
 }

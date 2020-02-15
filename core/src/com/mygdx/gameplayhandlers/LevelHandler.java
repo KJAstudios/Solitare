@@ -27,8 +27,8 @@ public class LevelHandler {
         actorHandler = new ActorHandler(screen);
         deckBack = new Texture("test_back2.jpg");
         LevelLoader.loadLevel(this, screen);
-        LevelRenderer.renderLevel(screen, this);
-
+        LevelRenderer.renderLevel(actorHandler, this);
+        actorHandler.addActorsToScreen();
     }
 
 
