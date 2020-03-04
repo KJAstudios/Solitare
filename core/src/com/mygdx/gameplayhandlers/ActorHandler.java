@@ -28,8 +28,12 @@ public class ActorHandler {
      */
     public void addActorsToScreen() {
         for (Actor actor : actorList) {
+            if(gameScreen.getActors().contains(actor, true)){
+                continue;
+            }
             gameScreen.addActor(actor);
         }
+        gameScreen.render(0);
     }
 
     /**
