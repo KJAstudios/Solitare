@@ -12,7 +12,7 @@ public class ActorHandler {
     private List<Actor> actorList;
     private GameScreen gameScreen;
 
-    /**
+    /**-
      * this class handles actor management for the main game
      *
      * @param gameScreen the level being used
