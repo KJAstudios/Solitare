@@ -1,0 +1,8 @@
+booelan to tell update function if cards have been removed/moved
+
+call to gameListener in render function of GameScreen
+	gameListener only triggers if things happen to the game(movement, cards clicked, etc)
+
+add MovementHandler?/InputHandler? call to touchDown and touchUp functions in GameScreen
+
+figure out how touchDragged works

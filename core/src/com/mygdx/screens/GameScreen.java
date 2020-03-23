@@ -1,11 +1,14 @@
 package com.mygdx.screens;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.mygdx.cardstructures.CardActor;
 import com.mygdx.gameplayhandlers.CoordinateHandler;
 import com.mygdx.gameplayhandlers.LevelHandler;
+import com.mygdx.listeners.updateListener;
 
 import java.util.List;
 
@@ -14,6 +17,7 @@ public class GameScreen extends AbstractScreen implements InputProcessor {
     private List<CardActor> cardList;
     private LevelHandler level;
     private Image image;
+    private updateListener listener;
 
     /**
      * constructor
@@ -29,6 +33,21 @@ public class GameScreen extends AbstractScreen implements InputProcessor {
     @Override
     public void buildStage() {
         level = new LevelHandler(this);
+        listener= new updateListener(level);
+    }
+
+    @Override
+    public void render(float delta){
+        // Clear screen
+        Gdx.gl.glClearColor(0, 1, 0, 1);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+        //tell the listener to listen for updates
+        listener.listen();
+
+        // Calling to Stage methods
+        super.act(delta);
+        super.draw();
     }
 
     @Override

@@ -33,7 +33,6 @@ public class ActorHandler {
             }
             gameScreen.addActor(actor);
         }
-        gameScreen.render(0);
     }
 
     /**
