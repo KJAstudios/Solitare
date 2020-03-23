@@ -49,6 +49,17 @@ public class FaceupStack extends BaseStack {
     }
 
     /**
+     * pulls an individual card
+     *
+     * @return
+     */
+    public CardActor getCard() {
+        CardActor card = stack.get(0);
+        stack.remove(0);
+        return card;
+    }
+
+    /**
      * checks if a card or stack can be placed here
      *
      * @param card card to check

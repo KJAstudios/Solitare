@@ -2,10 +2,7 @@ package com.mygdx.gameplayhandlers;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
-import com.mygdx.cardstructures.CardActor;
-import com.mygdx.cardstructures.DeckStack;
-import com.mygdx.cardstructures.FaceupStack;
-import com.mygdx.cardstructures.LevelStack;
+import com.mygdx.cardstructures.*;
 import com.mygdx.gameplayhandlers.inputhandlers.BaseInputProcessor;
 import com.mygdx.renderers.LevelRenderer;
 import com.mygdx.screens.GameScreen;
@@ -20,6 +17,7 @@ public class LevelHandler {
     private Texture deckBack;
     private ActorHandler actorHandler;
     private BaseInputProcessor inputProcessor;
+    private InputStack inputStack;
 
     /**
      * constructor
@@ -28,8 +26,8 @@ public class LevelHandler {
      */
     public LevelHandler(GameScreen screen) {
         actorHandler = new ActorHandler(screen);
-        inputProcessor = new BaseInputProcessor(actorHandler);
         deckBack = new Texture("test_back2.jpg");
+        inputStack = new InputStack();
         LevelLoader.loadLevel(this, screen);
         LevelRenderer.renderLevel(actorHandler, this);
         Gdx.input.setInputProcessor(inputProcessor);
@@ -75,5 +73,9 @@ public class LevelHandler {
 
     public Texture getDeckBack() {
         return deckBack;
+    }
+
+    public InputStack getInputStack() {
+        return inputStack;
     }
 }

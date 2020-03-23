@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.mygdx.cardstructures.CardActor;
 import com.mygdx.gameplayhandlers.CoordinateHandler;
 import com.mygdx.gameplayhandlers.LevelHandler;
+import com.mygdx.gameplayhandlers.inputhandlers.InputHandler;
 import com.mygdx.listeners.updateListener;
 
 import java.util.List;
@@ -33,11 +34,11 @@ public class GameScreen extends AbstractScreen implements InputProcessor {
     @Override
     public void buildStage() {
         level = new LevelHandler(this);
-        listener= new updateListener(level);
+        listener = new updateListener(level);
     }
 
     @Override
-    public void render(float delta){
+    public void render(float delta) {
         // Clear screen
         Gdx.gl.glClearColor(0, 1, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -57,6 +58,7 @@ public class GameScreen extends AbstractScreen implements InputProcessor {
 
 
     }
+
     @Override
     public boolean keyDown(int keycode) {
         return false;
@@ -74,20 +76,19 @@ public class GameScreen extends AbstractScreen implements InputProcessor {
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+        InputHandler.touchDown(level, screenX, screenY);
         return false;
     }
 
     @Override
     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-
-        image.setX(screenX);
-        image.setY(-screenY);
-        this.addActor(image);
+        InputHandler.touchUp(level, screenX, screenY);
         return false;
     }
 
     @Override
     public boolean touchDragged(int screenX, int screenY, int pointer) {
+        InputHandler.touchDragged(level, screenX, screenY);
         return false;
     }
 
